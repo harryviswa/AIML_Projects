@@ -29,7 +29,7 @@ class expense_abc(ABC):
     @abstractmethod
     def load_expenses(filename): pass
 
-1
+
 class personal_expense(expense_abc):
 
     def __init__(self):
@@ -82,8 +82,7 @@ class personal_expense(expense_abc):
     def calculate_total_expenses(self, monthly_budget, expenses):
         ty = datetime.date.today().strftime('%Y-%m')
         total_expenses = sum(float(expense['Amount']) for expense in expenses if 'Amount' in expense and 'Date' in expense and datetime.datetime.strptime(str(expense['Date'])[:-9],'%Y-%m-%d').strftime('%Y-%m') == ty)
-        print('Your current expense is: ', total_expenses, ' for this month [', ty, '] with the monthly budget as $',
-              monthly_budget)
+        print('Your current expense is: ', total_expenses, ' for this month [', ty, '] with the monthly budget as $',monthly_budget)
         return total_expenses
 
     def track_budget(self):
